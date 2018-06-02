@@ -1,5 +1,7 @@
 var mongoose = require('mongoose');
 
+// mongoose automatically adds this schema into the database
+// lowercase and makes it plural
 var Todo = mongoose.model('Todo', {
   text: {
     type: String,
