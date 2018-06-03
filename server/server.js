@@ -1,3 +1,4 @@
+// cmd command to start server mongod.exe --dbpath /Users/Tom/mongo-data
 const express = require('express');
 const bodyParser = require('body-parser');
 
