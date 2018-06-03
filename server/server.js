@@ -1,4 +1,6 @@
 // cmd command to start server mongod.exe --dbpath /Users/Tom/mongo-data
+require('./config/config.js');
+
 const express = require('express');
 const bodyParser = require('body-parser');
 
@@ -11,7 +13,7 @@ const {Todo} = require('./model/todo.js');
 const {User} = require('./model/user.js');
 
 var app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT;
 
 // middleware that returns a function
 app.use(bodyParser.json());
