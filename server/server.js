@@ -113,8 +113,10 @@ app.patch('/todos/:id', (req,res) => {
 
 // POST /users
 app.post('/users',(req,res)=> {
+  // gets the email and password from the post request
   var body = _.pick(req.body, 'email', 'password');
 
+  // sets the email and password within this user
   var user = new User(body);
 
   user.save().then(() => {

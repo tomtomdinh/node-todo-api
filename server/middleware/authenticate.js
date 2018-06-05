@@ -1,6 +1,8 @@
 var {User} = require('./../model/user.js')
 
 // middleware response
+// this is a function
+// route wont get run until next gets called
 var authenticate = (req,res,next) => {
   var token = req.header('x-auth');
 
@@ -12,6 +14,8 @@ var authenticate = (req,res,next) => {
     req.user = user;
     req.token = token;
     next();
+
+    // will reject if a token is not found
   }).catch((e) => {
     res.status(401).send();
   });
