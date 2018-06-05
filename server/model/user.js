@@ -58,6 +58,17 @@ UserSchema.methods.generateAuthToken = function() {
   });
 };
 
+UserSchema.methods.removeToken = function(token) {
+  var user = this;
+
+  // $pull is a mongodb operator that removes items from an array that matches certain criteria
+  return user.update({
+    $pull: {
+        tokens: {token}
+    }
+  });
+};
+
 // model method or otherwise known as a static method
 UserSchema.statics.findByToken = function (token) {
   var User = this;
@@ -96,7 +107,7 @@ UserSchema.statics.findByCredentials = function(email, password) {
         } else {
           reject();
         }
-        
+
       });
     });
   });
@@ -119,6 +130,7 @@ UserSchema.pre('save', function(next) {
     next();
   }
 });
+
 
 var User = mongoose.model('User', UserSchema);
 
